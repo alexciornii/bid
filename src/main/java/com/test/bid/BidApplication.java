@@ -64,11 +64,15 @@ public class BidApplication {
             LOGGER.error("File not found {}; {}", filePath, e.getMessage(), e);
         }
 
+        BidDto bidDto = null;
         while (parser.hasNext()) {
             Event event = parser.next();
+
             if (event == Event.KEY_NAME) {
-                BidDto bidDto = new BidDto();
                 switch (parser.getString()) {
+                    case "bid":
+                        bidDto = new BidDto();
+                        break;
                     case "id":
                         parser.next();
                         bidDto.setId(parser.getString());
@@ -88,6 +92,10 @@ public class BidApplication {
                         bidDto.setPayload(decodedString);
                         break;
                 }
+            }
+
+            if (event == Event.END_OBJECT) {
+                parser.next();
                 Thread thread = new BidThread(bidDto);
                 thread.start();
             }

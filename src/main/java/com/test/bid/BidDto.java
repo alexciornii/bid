@@ -41,4 +41,14 @@ public class BidDto {
     public void setPayload(String payload) {
         this.payload = payload;
     }
+
+    @Override
+    public String toString() {
+        return "BidDto{" +
+                "id='" + id + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", type='" + type + '\'' +
+                ", payload='" + payload + '\'' +
+                '}';
+    }
 }
