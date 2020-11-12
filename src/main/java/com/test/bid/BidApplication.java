@@ -92,9 +92,7 @@ public class BidApplication {
                         bidDto.setPayload(decodedString);
                         break;
                 }
-            }
-
-            if (event == Event.END_OBJECT) {
+            } else if (event == Event.END_OBJECT) {
                 parser.next();
                 Thread thread = new BidThread(bidDto);
                 thread.start();

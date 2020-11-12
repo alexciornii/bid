@@ -44,7 +44,7 @@ public class BidDto {
 
     @Override
     public String toString() {
-        return "BidDto{" +
+        return "Bid{" +
                 "id='" + id + '\'' +
                 ", timestamp='" + timestamp + '\'' +
                 ", type='" + type + '\'' +
